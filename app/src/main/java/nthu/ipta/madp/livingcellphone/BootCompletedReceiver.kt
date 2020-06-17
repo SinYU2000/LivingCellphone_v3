@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import nthu.ipta.madp.livingcellphone.MainActivity.Mp_booting.mp_booting
 
 class BootCompletedReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -13,5 +14,7 @@ class BootCompletedReceiver: BroadcastReceiver() {
         } else {
             context!!.startService(Intent(context, ContinueService::class.java))
         }
+
+        mp_booting?.start()
     }
 }

@@ -13,6 +13,7 @@ import android.hardware.SensorManager
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.IBinder
+import android.provider.MediaStore
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
@@ -20,7 +21,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+
 import nthu.ipta.madp.livingcellphone.ContinueService.Mp_compass.mp_compass
+import nthu.ipta.madp.livingcellphone.MainActivity.Mp_booting.mp_booting
+
 
 
 class ContinueService : Service() {
@@ -28,6 +32,7 @@ class ContinueService : Service() {
     val TAG="ContinueService"
 
     private var mp_shake: MediaPlayer? = null
+
 
     private var receiver_charging:PowerConnectionReceiver?=null
     private var intentFilter_charging: IntentFilter? = null
@@ -113,6 +118,16 @@ class ContinueService : Service() {
         }
         setupCompass()
 
+        ////////booting
+        if(num==1) {
+            mp_booting = MediaPlayer.create(this, R.raw.cry)
+        }
+        if(num==0) {
+            mp_booting = MediaPlayer.create(this, R.raw.cry)
+        }
+
+
+
     }
 
 
@@ -159,7 +174,7 @@ class ContinueService : Service() {
             override fun onNewAzimuth(azimuth: Float) {
 
 //                runOnUiThread {
-//                    adjustArrow(azimuth)
+//                   adjustArrow(azimuth)
 //                }
             }
         }

@@ -86,7 +86,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    object Mp_booting{
+        var mp_booting : MediaPlayer? = null
 
+
+    }
 
 
 }
